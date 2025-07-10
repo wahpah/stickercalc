@@ -1,0 +1,46 @@
+body {
+  background: black;
+  color: white;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.calculator {
+  max-width: 300px;
+  margin: 50px auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+#display {
+  grid-column: span 4;
+  background: #333;
+  padding: 20px;
+  font-size: 32px;
+  text-align: right;
+  border-radius: 10px;
+}
+
+.btn {
+  background: #555;
+  border: none;
+  border-radius: 50%;
+  padding: 20px;
+  font-size: 24px;
+  color: white;
+  cursor: pointer;
+}
+
+.btn.orange {
+  background: orange;
+}
+
+.btn.gray {
+  background: #a5a5a5;
+  color: black;
+}
+
+/* When armed for secret reveal */
+.calculator.armed #display {
+  background: #444;
+}
