@@ -1,21 +1,7 @@
-// ================
-// SECRET CALCULATOR VARIABLES
-// ================
-let currentInput = "";
-let operator = "";
-let previousValue = "";
-let resultShown = false;
-
-let secretMemory = null;
-let clearCount = 0;
-let revealArmed = false;
-let revealUsed = false;
-
-// ================
-// CREATE INVISIBLE BUTTONS
-// ================
 function createButtonGrid() {
   const calc = document.querySelector("body");
+  calc.style.position = "relative";
+
   const overlay = document.createElement("div");
   overlay.style.position = "absolute";
   overlay.style.top = "50%";
@@ -27,7 +13,7 @@ function createButtonGrid() {
   overlay.style.display = "grid";
   overlay.style.gridTemplateColumns = "repeat(4, 1fr)";
   overlay.style.gridGap = "10px";
-  overlay.style.padding = "160px 10px 0";  // offset grid to buttons area
+  overlay.style.padding = "160px 10px 0";
 
   let buttons = [
     "AC", "+/-", "%", "/",
@@ -51,85 +37,3 @@ function createButtonGrid() {
 
   calc.appendChild(overlay);
 }
-
-// ================
-// SECRET HANDLER
-// ================
-function handleButton(label) {
-  if (revealArmed && !revealUsed) {
-    alert(secretMemory);
-    revealUsed = true;
-    return;
-  }
-
-  if (label === "AC") {
-    currentInput = "";
-    previousValue = "";
-    operator = "";
-    clearCount++;
-    if (clearCount >= 3 && !revealUsed) {
-      revealArmed = true;
-    }
-    return;
-  }
-
-  if (label === "+/-") {
-    if (currentInput !== "") currentInput = (parseFloat(currentInput) * -1).toString();
-    return;
-  }
-
-  if (label === "%") {
-    if (currentInput !== "") currentInput = (parseFloat(currentInput) / 100).toString();
-    return;
-  }
-
-  if (label === "≡") {
-    let total = parseFloat(currentInput || "0");
-    secretMemory = Math.abs(total - 6419870);
-    clearCount = 0;
-    revealArmed = false;
-    revealUsed = false;
-    return;
-  }
-
-  if (["+", "-", "*", "/"].includes(label)) {
-    if (currentInput === "" && previousValue === "") return;
-    if (previousValue !== "" && currentInput !== "") calculate();
-    operator = label;
-    previousValue = currentInput;
-    currentInput = "";
-    return;
-  }
-
-  if (label === "=") {
-    calculate();
-    return;
-  }
-
-  // numbers & .
-  if (resultShown) {
-    currentInput = "";
-    resultShown = false;
-  }
-  currentInput += label;
-}
-
-function calculate() {
-  let a = parseFloat(previousValue);
-  let b = parseFloat(currentInput);
-  if (isNaN(a) || isNaN(b)) return;
-  switch (operator) {
-    case '+': currentInput = (a + b).toString(); break;
-    case '-': currentInput = (a - b).toString(); break;
-    case '*': currentInput = (a * b).toString(); break;
-    case '/': currentInput = (a / b).toString(); break;
-  }
-  previousValue = "";
-  operator = "";
-  resultShown = true;
-}
-
-// ================
-// RUN
-// ================
-createButtonGrid();
