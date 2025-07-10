@@ -9,7 +9,7 @@ body {
   margin: 50px auto;
 }
 
-.buttons {
+.calculator > * {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 10px;
@@ -24,6 +24,7 @@ body {
   border-radius: 10px;
 }
 
+/* rest of your .btn styles stay the same */
 .btn {
   background: #555;
   border: none;
