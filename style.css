@@ -9,19 +9,20 @@ body {
   margin: 50px auto;
 }
 
-.calculator > div {
+.buttons {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 10px;
 }
 
 #display {
-  grid-column: span 4;
+  width: 100%;
   background: #333;
   padding: 20px;
   font-size: 32px;
   text-align: right;
   border-radius: 10px;
+  margin-bottom: 10px;
 }
 
 .btn {
