@@ -1,6 +1,5 @@
 body {
   background: black;
-  color: white;
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   display: flex;
   justify-content: center;
@@ -10,37 +9,40 @@ body {
 }
 
 .calculator {
-  width: 300px;
+  width: 260px;
 }
 
 #display {
   width: 100%;
+  height: 60px;
   background: #333;
-  padding: 20px;
-  font-size: 32px;
+  padding: 10px;
+  font-size: 28px;
   text-align: right;
-  border-radius: 10px;
+  border-radius: 8px;
   margin-bottom: 10px;
+  color: white;
 }
 
 .buttons {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
+  grid-gap: 8px;
 }
 
 .btn {
   background: #555;
   border: none;
   border-radius: 50%;
-  padding: 20px;
-  font-size: 24px;
+  height: 60px;
+  font-size: 20px;
   color: white;
   cursor: pointer;
 }
 
 .btn.orange {
   background: orange;
+  color: white;
 }
 
 .btn.gray {
